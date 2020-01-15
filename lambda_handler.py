@@ -61,10 +61,7 @@ def lambda_handler(event, context):
     speech = "considering "+CURRENCY_MAP[d['base']]+" as base currency, one euro equals to  "
     for rate in d['rates']:
         speech += (CURRENCY_MAP[rate] if rate in CURRENCY_MAP else rate) + " " + str(round(d['rates'][rate], 2)) + ", "
-    c= context.__dict__
     return {
-        'inp':str(list(c)),
-        'oup': str(event),
         'version': '1.0',
         'sessionAttributes': {"speech_output": speech,
                               "reprompt_text": speech
